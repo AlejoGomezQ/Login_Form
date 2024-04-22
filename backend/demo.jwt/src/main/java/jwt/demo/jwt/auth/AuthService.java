@@ -1,5 +1,6 @@
 package jwt.demo.jwt.auth;
 
+import jwt.demo.jwt.jwt.JwtService;
 import jwt.demo.jwt.user.Role;
 import jwt.demo.jwt.user.User;
 import jwt.demo.jwt.user.UserRepository;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 public class AuthService {
 
     private final UserRepository userRepository;
+    private final JwtService jwtService;
 
     public AuthResponse login(LoginRequest request) {
         return null;
@@ -27,9 +29,9 @@ public class AuthService {
                 .build();
 
         userRepository.save(user);
-        
+
         return AuthResponse.builder()
-                .token(null)
+                .token(jwtService.getToken(user))
                 .build();
     }
 
