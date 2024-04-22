@@ -38,4 +38,11 @@ public class JwtService {
 
             return Keys.hmacShaKeyFor(keyBytes);
     }
+
+    public String getUsernameFromToken(String token) {
+
+    }
+
+    public boolean isTokenValid(String token, UserDetails userDetails) {
+    }
 }
